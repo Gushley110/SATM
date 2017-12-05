@@ -12,8 +12,16 @@ public class PropietarioBD {
     
     private final String tabla = "propietario";
     
+    public Propietario getPropietarioById(Connection c, int id){
+        
+        Propietario p = null;
+        
+        
+        
+        return p;
+    }
     
-    public List<Propietario> imprimePropietarios(Connection c) throws SQLException{
+    public List<Propietario> getPropietarios(Connection c) throws SQLException{
         
         List<Propietario> ps = new ArrayList<>();
         
