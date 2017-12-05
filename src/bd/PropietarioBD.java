@@ -12,16 +12,25 @@ public class PropietarioBD {
     
     private final String tabla = "propietario";
     
-    public void imprimePropietarios(Connection c) throws SQLException{
+    
+    public List<Propietario> imprimePropietarios(Connection c) throws SQLException{
+        
+        List<Propietario> ps = new ArrayList<>();
         
         try{
+            
          PreparedStatement consulta = c.prepareStatement("SELECT * FROM " + this.tabla );
          ResultSet r = consulta.executeQuery();
+         
          while(r.next()){
-             System.out.println(r.getInt(1)+r.getInt(2));
+             ps.add(new Propietario(r.getInt(1),r.getString(2)+r.getString(3)+r.getString(4),r.getInt(5)));
          }
+         
       }catch(SQLException ex){
          throw new SQLException(ex);
       }
+        
+        return ps;
+        
     }
 }
