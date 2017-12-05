@@ -6,8 +6,9 @@ public class Propietario {
     private String nombre;
     private int telefono;
     
-    public Propietario(String nombre, int telefono){
+    public Propietario(int id,String nombre, int telefono){
         
+        this.setId(id);
         this.setNombre(nombre);
         this.setTelefono(telefono);
     }
