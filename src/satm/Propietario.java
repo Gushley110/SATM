@@ -4,9 +4,9 @@ public class Propietario {
     
     private int id;
     private String nombre;
-    private int telefono;
+    private String telefono;
     
-    public Propietario(int id,String nombre, int telefono){
+    public Propietario(int id,String nombre, String telefono){
         
         this.setId(id);
         this.setNombre(nombre);
@@ -29,11 +29,11 @@ public class Propietario {
         this.nombre = nombre;
     }
 
-    public int getTelefono() {
+    public String getTelefono() {
         return telefono;
     }
 
-    public void setTelefono(int telefono) {
+    public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
     
