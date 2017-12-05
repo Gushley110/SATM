@@ -31,7 +31,7 @@ public class PropietarioBD {
          ResultSet r = consulta.executeQuery();
          
          while(r.next()){
-             ps.add(new Propietario(r.getInt(1),r.getString(2)+r.getString(3)+r.getString(4),r.getInt(5)));
+             ps.add(new Propietario(r.getInt(1),r.getString(2)+" "+r.getString(3)+" "+r.getString(4),r.getString(5)));
          }
          
       }catch(SQLException ex){
