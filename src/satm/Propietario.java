@@ -36,6 +36,11 @@ public class Propietario {
         this.telefono = telefono;
     }
     
+    @Override
+    public String toString(){
+        return "Mi nombre es "+this.getNombre()+" y mi numero es "+this.getTelefono();
+    }
+    
     
     
 }
