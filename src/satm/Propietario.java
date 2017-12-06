@@ -4,6 +4,8 @@ public class Propietario {
     
     private int id;
     private String nombre;
+    private String app;
+    private String apm;
     private String telefono;
     
     public Propietario(int id,String nombre, String telefono){
@@ -27,6 +29,22 @@ public class Propietario {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+    
+    public String getApp() {
+        return app;
+    }
+
+    public void setApp(String app) {
+        this.app = app;
+    }
+
+    public String getApm() {
+        return apm;
+    }
+
+    public void setApm(String apm) {
+        this.apm = apm;
     }
 
     public String getTelefono() {
