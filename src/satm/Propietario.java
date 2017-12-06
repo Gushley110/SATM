@@ -2,12 +2,12 @@ package satm;
 
 public class Propietario {
     
-    private int id;
+    private Integer id;
     private String nombre;
     private String app;
     private String apm;
     private String telefono;
-    
+     
     public Propietario(int id,String nombre, String telefono){
         
         this.setId(id);
@@ -15,11 +15,11 @@ public class Propietario {
         this.setTelefono(telefono);
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
