@@ -7,7 +7,15 @@ public class Propietario {
     private String app;
     private String apm;
     private String telefono;
-     
+    
+    public Propietario(){
+        this.id = null;
+        this.nombre = null;
+        this.app = null;
+        this.apm = null;
+        this.telefono = null;
+    }
+    
     public Propietario(int id,String nombre, String telefono){
         
         this.setId(id);
