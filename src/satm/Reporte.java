@@ -6,6 +6,7 @@ public class Reporte {
     
     private Date fechaEntrada;
     private Date fechaSalida;
+    private String descFalla;
     private int pagoxserv;
     private int pagoAdelanto;
 
@@ -23,6 +24,14 @@ public class Reporte {
 
     public void setFechaSalida(Date fechaSalida) {
         this.fechaSalida = fechaSalida;
+    }
+    
+    public String getDescFalla() {
+        return descFalla;
+    }
+
+    public void setDescFalla(String descFalla) {
+        this.descFalla = descFalla;
     }
 
     public int getPagoxserv() {
