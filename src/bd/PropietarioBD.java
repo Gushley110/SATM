@@ -10,24 +10,26 @@ import satm.Propietario;
 
 public class PropietarioBD {
     
-    private final String tabla = "propietario";
+    private final String tabla = "cliente";
     
     public void savePropietario(Connection c, Propietario p) throws SQLException{
       try{
          PreparedStatement query;
          if(p.getId() == null){
-            query = c.prepareStatement("INSERT INTO " + this.tabla + "(nomPropietario, appPropietario, apmPropietario, telPropietario) VALUES(?, ?, ?, ?)");
-            query.setString(1, p.getNombre());
-            query.setString(2, p.getApp());
-            query.setString(3, p.getApm());
-            query.setString(4, p.getTelefono());
+            query = c.prepareStatement("INSERT INTO " + this.tabla + "(curpCliente, NomCliente, ApaCliente, AmaCliente,telCliente) VALUES(?, ?, ?, ?, ?)");
+            query.setString(1, p.getCurp());
+            query.setString(2, p.getNombre());
+            query.setString(3, p.getApp());
+            query.setString(4, p.getApm());
+            query.setString(5, p.getTelefono());
          }else{
-            query = c.prepareStatement("UPDATE " + this.tabla + " SET nomPropietario = ?, appPropietario = ?, apmPropietario = ?, telPropietario = ? WHERE idPropietario = ?");
-            query.setString(1, p.getNombre());
-            query.setString(2, p.getApp());
-            query.setString(3, p.getApm());
-            query.setString(4, p.getTelefono());
-            query.setInt(5, p.getId());
+            query = c.prepareStatement("UPDATE " + this.tabla + " SET curpCliente = ?,NomCliente = ?, ApaCliente = ?, AmaCliente = ?, telCliente = ? WHERE idCliente = ?");
+            query.setString(1, p.getCurp());
+            query.setString(2, p.getNombre());
+            query.setString(3, p.getApp());
+            query.setString(4, p.getApm());
+            query.setString(5, p.getTelefono());
+            query.setInt(6, p.getId());
          }
          query.executeUpdate();
       }catch(SQLException ex){
@@ -41,11 +43,11 @@ public class PropietarioBD {
         
         try{
             
-         PreparedStatement query = c.prepareStatement("SELECT nomPropietario, appPropietario, apmPropietario, telPropietario FROM " + this.tabla + " WHERE idPropietario = ?");
+         PreparedStatement query = c.prepareStatement("SELECT curpCliente, NomCliente, ApaCliente, AmaCliente, telCliente FROM " + this.tabla + " WHERE idCliente = ?");
          query.setInt(1, id);
          ResultSet r = query.executeQuery();
          while(r.next()){
-             p = new Propietario(id,r.getString(1),r.getString(2),r.getString(3),r.getString(4));
+             p = new Propietario(id,r.getString(1),r.getString(2),r.getString(3),r.getString(4),r.getString(5));
          }
          }catch(SQLException ex){
          throw new SQLException(ex);
@@ -64,7 +66,7 @@ public class PropietarioBD {
          ResultSet r = query.executeQuery();
          
          while(r.next()){
-             ps.add(new Propietario(r.getInt(1),r.getString(2),r.getString(3),r.getString(4),r.getString(5)));
+             ps.add(new Propietario(r.getInt(1),r.getString(2),r.getString(3),r.getString(4),r.getString(5),r.getString(6)));
          }
          
       }catch(SQLException ex){
