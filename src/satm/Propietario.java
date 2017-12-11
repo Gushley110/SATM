@@ -16,10 +16,20 @@ public class Propietario {
         this.telefono = null;
     }
     
-    public Propietario(int id,String nombre, String telefono){
+    public Propietario(String nombre, String app, String apm, String tel){
+        this.id = null;
+        this.nombre = nombre;
+        this.app = app;
+        this.apm = apm;
+        this.telefono = tel;
+    }   
+    
+    public Propietario(Integer id,String nombre,String app, String apm, String telefono){
         
         this.setId(id);
         this.setNombre(nombre);
+        this.setApp(app);
+        this.setApm(apm);
         this.setTelefono(telefono);
     }
 
