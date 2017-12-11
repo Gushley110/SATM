@@ -12,24 +12,24 @@ public class PropietarioBD {
     
     private final String tabla = "propietario";
     
-    public void guardarPropietario(Connection c, Propietario p) throws SQLException{
+    public void savePropietario(Connection c, Propietario p) throws SQLException{
       try{
-         PreparedStatement consulta;
+         PreparedStatement query;
          if(p.getId() == null){
-            consulta = c.prepareStatement("INSERT INTO " + this.tabla + "(nomPropietario, appPropietario, apmPropietario, telPropietario) VALUES(?, ?, ?, ?)");
-            consulta.setString(1, p.getNombre());
-            consulta.setString(2, p.getApp());
-            consulta.setString(3, p.getApm());
-            consulta.setString(4, p.getTelefono());
+            query = c.prepareStatement("INSERT INTO " + this.tabla + "(nomPropietario, appPropietario, apmPropietario, telPropietario) VALUES(?, ?, ?, ?)");
+            query.setString(1, p.getNombre());
+            query.setString(2, p.getApp());
+            query.setString(3, p.getApm());
+            query.setString(4, p.getTelefono());
          }else{
-            consulta = c.prepareStatement("UPDATE " + this.tabla + " SET nomPropietario = ?, appPropietario = ?, apmPropietario = ?, telPropietario = ? WHERE idPropietario = ?");
-            consulta.setString(1, p.getNombre());
-            consulta.setString(2, p.getApp());
-            consulta.setString(3, p.getApm());
-            consulta.setString(4, p.getTelefono());
-            consulta.setInt(5, p.getId());
+            query = c.prepareStatement("UPDATE " + this.tabla + " SET nomPropietario = ?, appPropietario = ?, apmPropietario = ?, telPropietario = ? WHERE idPropietario = ?");
+            query.setString(1, p.getNombre());
+            query.setString(2, p.getApp());
+            query.setString(3, p.getApm());
+            query.setString(4, p.getTelefono());
+            query.setInt(5, p.getId());
          }
-         consulta.executeUpdate();
+         query.executeUpdate();
       }catch(SQLException ex){
          throw new SQLException(ex);
       }
@@ -41,11 +41,11 @@ public class PropietarioBD {
         
         try{
             
-         PreparedStatement consulta = c.prepareStatement("SELECT nomPropietario, appPropietario, apmPropietario, telPropietario FROM " + this.tabla + " WHERE idPropietario = ?");
-         consulta.setInt(1, id);
-         ResultSet r = consulta.executeQuery();
+         PreparedStatement query = c.prepareStatement("SELECT nomPropietario, appPropietario, apmPropietario, telPropietario FROM " + this.tabla + " WHERE idPropietario = ?");
+         query.setInt(1, id);
+         ResultSet r = query.executeQuery();
          while(r.next()){
-             p = new Propietario(id,r.getString(1)+" "+r.getString(2)+" "+r.getString(3),r.getString(4));
+             p = new Propietario(id,r.getString(1),r.getString(2),r.getString(3),r.getString(4));
          }
          }catch(SQLException ex){
          throw new SQLException(ex);
@@ -60,11 +60,11 @@ public class PropietarioBD {
         
         try{
             
-         PreparedStatement consulta = c.prepareStatement("SELECT * FROM " + this.tabla );
-         ResultSet r = consulta.executeQuery();
+         PreparedStatement query = c.prepareStatement("SELECT * FROM " + this.tabla );
+         ResultSet r = query.executeQuery();
          
          while(r.next()){
-             ps.add(new Propietario(r.getInt(1),r.getString(2)+" "+r.getString(3)+" "+r.getString(4),r.getString(5)));
+             ps.add(new Propietario(r.getInt(1),r.getString(2),r.getString(3),r.getString(4),r.getString(5)));
          }
          
       }catch(SQLException ex){
