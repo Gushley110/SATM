@@ -3,6 +3,7 @@ package satm;
 public class Propietario {
     
     private Integer id;
+    private String curp;
     private String nombre;
     private String app;
     private String apm;
@@ -16,17 +17,19 @@ public class Propietario {
         this.telefono = null;
     }
     
-    public Propietario(String nombre, String app, String apm, String tel){
+    public Propietario(String curp,String nombre, String app, String apm, String tel){
         this.id = null;
+        this.curp = curp;
         this.nombre = nombre;
         this.app = app;
         this.apm = apm;
         this.telefono = tel;
     }   
-    
-    public Propietario(Integer id,String nombre,String app, String apm, String telefono){
+
+    public Propietario(Integer id,String curp,String nombre,String app, String apm, String telefono){
         
         this.setId(id);
+        this.setCurp(curp);
         this.setNombre(nombre);
         this.setApp(app);
         this.setApm(apm);
@@ -39,6 +42,14 @@ public class Propietario {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+    
+    public String getCurp() {
+        return curp;
+    }
+
+    public void setCurp(String curp) {
+        this.curp = curp;
     }
 
     public String getNombre() {
