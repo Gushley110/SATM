@@ -2,6 +2,7 @@ package satm;
 
 import bd.PropietarioBD;
 import bd.Conn;
+import bd.*;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -14,13 +15,42 @@ public class SATM {
     
     public static void main(String[] args) throws SQLException {
         
-        // Initialization
-        
-        PropietarioBD pbd = new PropietarioBD();
         Connection c;
         
+        try {
+            c = Conn.obtener();
+            
+            Login l = new Login();
+            System.out.println(l.logIn(c, "", ""));
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(SATM.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        /*Connection c;
+        UsuarioBD usuario;
+        
+        usuario = new UsuarioBD();
+        
+        try {
+            c = Conn.obtener();
+            
+            Usuario u = usuario.getUsuarioByNick(c, "BuenMecanico");
+            System.out.println(u.toString());
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(SATM.class.getName()).log(Level.SEVERE, null, ex);
+        }*/
+        
+        
+        
+        
+        
+        //Initialization
+        
+        PropietarioBD pbd = new PropietarioBD();
+        //Connection c;
+        
         //Start Test savePropietario
-           Propietario p1 = new Propietario(2,"Eric","Peralta","Ramirez","123456");
+           Propietario p1 = new Propietario("FABS","Eric","Peralta","Ramirez","123456");
            try{
                c = Conn.obtener();
                pbd.savePropietario(c, p1);
@@ -29,8 +59,7 @@ public class SATM {
             Logger.getLogger(SATM.class.getName()).log(Level.SEVERE, null, ex);
         }
            
-        //end
-        
+        //end        
         // Start Test getPropietarios 
         
         try {
@@ -56,9 +85,17 @@ public class SATM {
         }
         
         
-        //End
+        //End*/
         
         
+    }
+    
+    public boolean logIn(String nickName, String pass,Usuario u){
+        
+        String nick = u.getNick();
+        String pwd = u.getPass();
+        
+        return nickName.equals(nick) && pass.equals(pwd);
     }
     
 }
